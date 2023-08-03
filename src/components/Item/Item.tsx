@@ -1,4 +1,3 @@
-import { useEffect, useRef } from 'react';
 import { ListChildComponentProps } from 'react-window';
 
 import s from './Item.module.css';
@@ -12,34 +11,10 @@ const Item = ({
   item: Item;
   style: ListChildComponentProps['style'];
 }) => {
-  const itemRef = useRef<HTMLDivElement | null>(null);
-  const downbarRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const itemElement = itemRef.current;
-    const downbarElement = downbarRef.current;
-
-    if (itemElement && downbarElement) {
-      const enterHandler = () => {
-        downbarElement.classList.add(s['item-downbar-active']);
-      };
-      const leaveHandler = () => {
-        downbarElement.classList.remove(s['item-downbar-active']);
-      };
-      itemElement.addEventListener('mouseenter', enterHandler);
-      itemElement.addEventListener('mouseleave', leaveHandler);
-
-      return () => {
-        itemElement.removeEventListener('mouseenter', enterHandler);
-        itemElement.removeEventListener('mouseleave', leaveHandler);
-      };
-    }
-  }, [itemRef, downbarRef]);
-
   return (
-    <div className={s['item']} ref={itemRef} style={style}>
+    <div className={s['item']} style={style}>
       <Image className={s['item-img']} src={img} alt={title} />
-      <div className={s['item-downbar']} ref={downbarRef}>
+      <div className={s['item-downbar']}>
         <span>{title}</span>
         <span>{price}$</span>
       </div>

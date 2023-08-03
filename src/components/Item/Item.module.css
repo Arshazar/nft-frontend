@@ -18,11 +18,10 @@
   transition: opacity 0.5s;
   background-color: rgba(0, 0, 0, 0.342);
 }
+.item:hover .item-downbar{
+  opacity: 1;
+}
 .item-downbar span {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
-}
-
-.item-downbar-active {
-  opacity: 1;
 }

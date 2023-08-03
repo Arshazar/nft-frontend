@@ -7,8 +7,7 @@ interface ReqBody {
 
 class Api {
   token: string = '';
-  baseUrl: string =
-    'https://api-mainnet.magiceden.io/idxv2/getListedNftsByCollectionSymbol?collectionSymbol=okay_bears';
+  baseUrl: string = 'https://api-mainnet.magiceden.io';
 
   private request<T>(
     method: 'post' | 'get' | 'patch' | 'delete',

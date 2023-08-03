@@ -9,6 +9,7 @@ export interface ListProps {
   data: Item[] | [];
   hasNextPage: boolean;
   isLoading: boolean;
+  disableFetch?: boolean;
   loadNextPage: () => void;
 }
 export interface ImageProps {

@@ -10,9 +10,10 @@ function App() {
   const [text, setText] = useState<string>('');
 
   const fetchItems = async ({ pageParam = 0 }) => {
-    const res: AxiosResponse['data'] = await api.get('', { limit: pageParam, offset: pageParam });
+    const res: AxiosResponse['data'] = await api.get('/idxv2/getListedNftsByCollectionSymbol?collectionSymbol=okay_bears', { limit: 20, offset: pageParam });
     return res.results;
   };
+
   const { data, error, fetchNextPage, hasNextPage, isLoading } = useInfiniteQuery<
     Item[] | [],
     Error
@@ -20,9 +21,9 @@ function App() {
     getNextPageParam: (_lastPage, pages) => pages.length * 20
   });
 
-  const handleFilter = (txt: string) => {
-    const flatData = data?.pages.flat();
+  const filteredData = (txt: string) => {
     if (!data) return [];
+    const flatData = data?.pages.flat();
     if (txt.trim().length === 0) return flatData;
     const filteredData =
       Array.isArray(flatData) &&
@@ -37,9 +38,10 @@ function App() {
         <SearchBar setText={setText} text={text} />
         <h3>{error instanceof Error}</h3>
         <List
-          data={handleFilter(text) as Item[] | []}
+          data={filteredData(text) as Item[] | []}
           loadNextPage={fetchNextPage}
           isLoading={isLoading}
+          disableFetch={text.length > 0}
           hasNextPage={hasNextPage as boolean}
         />
       </div>
