@@ -1,10 +1,11 @@
 # NFT frontend
 
-This project is created by Vite, React and Typescript.
-To have a virtualized list, I used react-window and its infinite-loader.
-API handling was mediated by Axios.
+This project is created with Vite, React and Typescript.
+Virtualized list was implemented using react-window library.
+API was handle with react-query and Axios.
+CSS modules were used for stylings.
 
-## Installation and running on localhost
+## Installation and run on localhost
 
 #### yarn
 

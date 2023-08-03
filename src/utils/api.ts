@@ -20,36 +20,22 @@ class Api {
       axios({
         method,
         url: this.baseUrl + url,
-        ...(body
+        ...(body && method === 'get' // Check if it's a 'get' request and has a body (parameters)
           ? {
-              data: body
+              params: body // Use 'params' property for GET requests
             }
-          : {}),
+          : {
+              data: body // Use 'data' property for other requests (post, patch, delete)
+            }),
         ...config
       })
         .then((response: AxiosResponse<T>) => {
           resolve(response.data);
         })
         .catch((error: AxiosError) => {
-          this.handleError(error);
           reject(error);
         });
     });
-  }
-
-  private handleError(err: AxiosError) {
-    console.log('ERRRROR: ', err);
-    if (err.message && typeof err.message === 'string') {
-      console.log('ERRRROR: ', err.message);
-    } else if (err.message && typeof err.message === 'object') {
-      Object.values(err.message).map((errValue) => {
-        if (Array.isArray(errValue)) {
-          console.log('ERRRROR: ', errValue[0]);
-        } else {
-          console.log('ERRRROR: ', errValue);
-        }
-      });
-    }
   }
 
   get<T>(url: string, parameters?: ReqBody, config?: AxiosRequestConfig): Promise<T> {

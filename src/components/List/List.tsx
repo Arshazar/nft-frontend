@@ -16,9 +16,7 @@ const List = ({ data, hasNextPage, isLoading, loadNextPage }: ListProps) => {
 
   const Cell = ({ columnIndex, rowIndex, style }: GridChildComponentProps) => {
     const index = rowIndex * 5 + columnIndex;
-    if (!isItemLoaded(index)) {
-      return <p>Loading...</p>;
-    } else {
+    if (isItemLoaded(index)) {
       const item = data[index];
       return (
         <Item
