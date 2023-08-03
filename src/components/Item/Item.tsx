@@ -1,8 +1,15 @@
 import s from './Item.module.css';
 import { Item } from '../../types/commonTypes';
 import { useEffect, useRef } from 'react';
+import { ListChildComponentProps } from 'react-window';
 
-const Item = ({ item: { title, img, price } }: { item: Item }) => {
+const Item = ({
+  item: { title, img, price },
+  style
+}: {
+  item: Item;
+  style: ListChildComponentProps['style'];
+}) => {
   const itemRef = useRef<HTMLDivElement | null>(null);
   const downbarRef = useRef<HTMLDivElement | null>(null);
 
@@ -28,7 +35,7 @@ const Item = ({ item: { title, img, price } }: { item: Item }) => {
   }, [itemRef, downbarRef]);
 
   return (
-    <div className={s['item']} ref={itemRef}>
+    <div className={s['item']} ref={itemRef} style={style}>
       <img className={s['item-img']} src={img} />
       <div className={s['item-downbar']} ref={downbarRef}>
         <span>{title}</span>

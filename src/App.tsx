@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 
-import './styles/App.css';
 import { SearchBar, List } from './components';
 import { api } from './utils';
 import { Item } from './types/commonTypes';
@@ -51,23 +50,26 @@ function App() {
   };
 
   const _loadNextPage = () => {
+    console.log('shit');
     setIsLoading(true);
     setOffset((prevOffset) => prevOffset + 20);
     handleGetData(true);
   };
 
   return (
-    <>
-      <h1>A cool NFT shop website</h1>
-      <SearchBar setText={setText} text={text} />
-      <h3>{error}</h3>
-      <List
-        data={handleFilter(text)}
-        loadNextPage={_loadNextPage}
-        isLoading={isLoading}
-        hasNextPage={true}
-      />
-    </>
+    <div className="app">
+      <div className="container">
+        <h1>A cool NFT shop website</h1>
+        <SearchBar setText={setText} text={text} />
+        <h3>{error}</h3>
+        <List
+          data={handleFilter(text)}
+          loadNextPage={_loadNextPage}
+          isLoading={isLoading}
+          hasNextPage={true}
+        />
+      </div>
+    </div>
   );
 }
 

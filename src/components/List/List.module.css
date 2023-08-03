@@ -1,11 +1,13 @@
-.list {
+.list-wrapper {
   margin-top: 3rem;
-  max-width: 100%;
+  width: calc(100% - var(--margin-x-list));
+  min-height: 60dvh;
+  max-height: 70dvh;
+  height: auto;
+  margin: auto var(--margin-x-list);
 }
 .list > div {
-  max-width: auto;
-  min-width: 200px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 1rem;
 }
