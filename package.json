@@ -19,6 +19,7 @@
     "react-window-infinite-loader": "^1.0.9"
   },
   "devDependencies": {
+    "@types/node": "^20.4.6",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@types/react-window": "^1.8.5",
