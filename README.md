@@ -2,7 +2,7 @@
 
 This project is created with Vite, React and Typescript.
 Virtualized list was implemented using react-window library.
-API was handle with react-query and Axios.
+API was handled with react-query and Axios.
 CSS modules were used for stylings.
 
 ## Installation and run on localhost
