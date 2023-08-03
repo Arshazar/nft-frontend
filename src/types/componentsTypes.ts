@@ -1,3 +1,4 @@
+import { CSSProperties } from 'react';
 import { Item } from './commonTypes';
 
 export interface SearchBarProps {
@@ -9,4 +10,10 @@ export interface ListProps {
   hasNextPage: boolean;
   isLoading: boolean;
   loadNextPage: () => void;
+}
+export interface ImageProps {
+  className?: string;
+  style?: CSSProperties;
+  src?: string;
+  alt: string;
 }

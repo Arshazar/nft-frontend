@@ -21,11 +21,12 @@ function App() {
   });
 
   const handleFilter = (txt: string) => {
+    const flatData = data?.pages.flat();
     if (!data) return [];
-    if (txt.trim().length === 0) return data.pages.flat();
+    if (txt.trim().length === 0) return flatData;
     const filteredData =
-      Array.isArray(data.pages) &&
-      data.pages.flat().filter((item) => item.title.toLowerCase().includes(txt.toLowerCase()));
+      Array.isArray(flatData) &&
+      flatData.filter((item) => item.title.toLowerCase().includes(txt.toLowerCase()));
     return filteredData;
   };
 

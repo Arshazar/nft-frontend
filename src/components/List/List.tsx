@@ -26,6 +26,7 @@ const List = ({ data, hasNextPage, isLoading, loadNextPage }: ListProps) => {
             height: (style.height as number) - gutter
           }}
           item={item}
+          key={`item-${index}`}
         />
       );
     }
