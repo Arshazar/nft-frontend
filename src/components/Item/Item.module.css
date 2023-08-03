@@ -1,0 +1,30 @@
+.item {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+.item-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+.item-downbar {
+  display: flex;
+  height: 40px;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  opacity: 0;
+  padding: 0;
+  bottom: 40px;
+  transition: opacity 0.5s;
+  background-color: rgba(0, 0, 0, 0.342);
+}
+.item-downbar span {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.item-downbar-active {
+  opacity: 1;
+}
