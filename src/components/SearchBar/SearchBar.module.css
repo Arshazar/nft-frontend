@@ -1,5 +1,4 @@
 .input-wrapper {
-  width: calc(100% - 2rem);
   margin: 2rem;
 }
 .input-wrapper input {
