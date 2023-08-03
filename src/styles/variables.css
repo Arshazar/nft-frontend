@@ -1,3 +1,12 @@
 html {
+  --color-1: rgba(255, 255, 255, 0.87);
+  --bg-color-1: #242424;
+  --border-color-1: #eee;
+
   --margin-x-list: 2rem;
+  --margin-container-1: 4rem 2.5rem 2rem;
+  --margin-container-2: 3rem 2rem 2rem;
+  --margin-container-3: 2.5rem 1.5rem 1.5rem;
+  --margin-container-4: 2rem 1.2rem 1.2rem;
+  --margin-container-5: 2rem 1rem 1rem;
 }

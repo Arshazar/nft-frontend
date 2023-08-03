@@ -1,4 +1,4 @@
-import {useRef} from "react";
+import { useRef } from 'react';
 import { FixedSizeGrid as Grid, GridChildComponentProps } from 'react-window';
 import InfiniteLoader from 'react-window-infinite-loader';
 import AutoSizer from 'react-virtualized-auto-sizer';
@@ -18,7 +18,7 @@ const List = ({ data, hasNextPage, isLoading, loadNextPage, disableFetch }: List
     1: useMediaQuery('screen and (max-width:480px)'),
     2: useMediaQuery('screen and (max-width:680px)'),
     3: useMediaQuery('screen and (max-width:992px)'),
-    4: useMediaQuery('screen and (max-width:1280px)'),
+    4: useMediaQuery('screen and (max-width:1280px)')
   };
 
   if (cols[1]) grid.current = 1;
@@ -48,33 +48,38 @@ const List = ({ data, hasNextPage, isLoading, loadNextPage, disableFetch }: List
     <div className={s['list-wrapper']}>
       <AutoSizer>
         {({ height, width }) => (
-            <InfiniteLoader
-              isItemLoaded={isItemLoaded}
-              itemCount={10000}
-              loadMoreItems={loadMoreItems}>
-              {({ onItemsRendered, ref }) => (
-                <Grid
-                  columnCount={grid.current}
-                  columnWidth={width / grid.current}
-                  height={height}
-                  overscanRowCount={4}
-                  onItemsRendered={({visibleRowStartIndex, overscanRowStopIndex, overscanRowStartIndex, visibleRowStopIndex}) => {
-                    onItemsRendered({
-                      overscanStartIndex: overscanRowStartIndex * grid.current,
-                      overscanStopIndex: overscanRowStopIndex * grid.current + (grid.current - 1),
-                      visibleStartIndex: visibleRowStartIndex * grid.current,
-                      visibleStopIndex: visibleRowStopIndex * grid.current + (grid.current - 1)
-                    });
-                  }}
-                  ref={ref}
-                  rowCount={Math.floor(data.length / grid.current)}
-                  rowHeight={width / grid.current}
-                  width={width + gutter}>
-                  {Cell}
-                </Grid>
-              )}
-            </InfiniteLoader>
-          )}
+          <InfiniteLoader
+            isItemLoaded={isItemLoaded}
+            itemCount={10000}
+            loadMoreItems={loadMoreItems}>
+            {({ onItemsRendered, ref }) => (
+              <Grid
+                columnCount={grid.current}
+                columnWidth={width / grid.current}
+                height={height}
+                overscanRowCount={4}
+                onItemsRendered={({
+                  visibleRowStartIndex,
+                  overscanRowStopIndex,
+                  overscanRowStartIndex,
+                  visibleRowStopIndex
+                }) => {
+                  onItemsRendered({
+                    overscanStartIndex: overscanRowStartIndex * grid.current,
+                    overscanStopIndex: overscanRowStopIndex * grid.current + (grid.current - 1),
+                    visibleStartIndex: visibleRowStartIndex * grid.current,
+                    visibleStopIndex: visibleRowStopIndex * grid.current + (grid.current - 1)
+                  });
+                }}
+                ref={ref}
+                rowCount={Math.floor(data.length / grid.current)}
+                rowHeight={width / grid.current}
+                width={width + gutter}>
+                {Cell}
+              </Grid>
+            )}
+          </InfiniteLoader>
+        )}
       </AutoSizer>
     </div>
   );

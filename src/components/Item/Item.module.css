@@ -18,7 +18,7 @@
   transition: opacity 0.5s;
   background-color: rgba(0, 0, 0, 0.342);
 }
-.item:hover .item-downbar{
+.item:hover .item-downbar {
   opacity: 1;
 }
 .item-downbar span {

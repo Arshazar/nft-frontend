@@ -10,7 +10,10 @@ function App() {
   const [text, setText] = useState<string>('');
 
   const fetchItems = async ({ pageParam = 0 }) => {
-    const res: AxiosResponse['data'] = await api.get('/idxv2/getListedNftsByCollectionSymbol?collectionSymbol=okay_bears', { limit: 20, offset: pageParam });
+    const res: AxiosResponse['data'] = await api.get(
+      '/idxv2/getListedNftsByCollectionSymbol?collectionSymbol=okay_bears',
+      { limit: 20, offset: pageParam }
+    );
     return res.results;
   };
 
@@ -21,7 +24,7 @@ function App() {
     getNextPageParam: (_lastPage, pages) => pages.length * 20
   });
 
-  const filteredData = (txt: string) => {
+  const _filteredData = (txt: string) => {
     if (!data) return [];
     const flatData = data?.pages.flat();
     if (txt.trim().length === 0) return flatData;
@@ -38,10 +41,10 @@ function App() {
         <SearchBar setText={setText} text={text} />
         <h3>{error instanceof Error}</h3>
         <List
-          data={filteredData(text) as Item[] | []}
+          data={_filteredData(text) as Item[] | []}
           loadNextPage={fetchNextPage}
           isLoading={isLoading}
-          disableFetch={text.length > 0}
+          disableFetch={text.trim().length > 0}
           hasNextPage={hasNextPage as boolean}
         />
       </div>
