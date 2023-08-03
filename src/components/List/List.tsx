@@ -4,8 +4,8 @@ import AutoSizer from 'react-virtualized-auto-sizer';
 
 import s from './List.module.css';
 import { Item } from '..';
-import { ListProps } from '../../types/componentsTypes';
-import { useViewport } from '../../hooks';
+import { ListProps } from '@/types/componentsTypes';
+import { useViewport } from '@/hooks';
 
 const gutter = 16;
 

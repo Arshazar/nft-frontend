@@ -1,5 +1,5 @@
 import s from './Item.module.css';
-import { Item } from '../../types/commonTypes';
+import { Item } from '@/types/commonTypes';
 import { useEffect, useRef } from 'react';
 import { ListChildComponentProps } from 'react-window';
 
